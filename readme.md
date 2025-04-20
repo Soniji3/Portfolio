@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/050bcf17-4b4a-4361-b71f-b961dbd55058)# 🌐 Project Showcase Portfolio
+ 🌐 Project Showcase Portfolio
 
 A responsive and elegant project portfolio website built with **HTML** and **CSS**, showcasing multiple personal projects with interactive layouts and clean visuals.
 
@@ -20,7 +20,7 @@ A responsive and elegant project portfolio website built with **HTML** and **CSS
 ## 📸 Screenshots
 
 
-
+![image](https://github.com/user-attachments/assets/050bcf17-4b4a-4361-b71f-b961dbd55058)#
 
 ## 🌐 Live Demo
 

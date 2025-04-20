@@ -1,4 +1,4 @@
-# 🌐 Project Showcase Portfolio
+![image](https://github.com/user-attachments/assets/050bcf17-4b4a-4361-b71f-b961dbd55058)# 🌐 Project Showcase Portfolio
 
 A responsive and elegant project portfolio website built with **HTML** and **CSS**, showcasing multiple personal projects with interactive layouts and clean visuals.
 
@@ -19,7 +19,8 @@ A responsive and elegant project portfolio website built with **HTML** and **CSS
 
 ## 📸 Screenshots
 
-![Portfolio Screenshot](https://github.com/Soniji3/Catering-Site/blob/main/1743373871486.jpg?raw=true)
+![Uploading image.png…]()
+
 
 ## 🌐 Live Demo
 

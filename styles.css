@@ -100,16 +100,15 @@ a:hover {
   transition: all 0.3s ease;
 }
 
-#Resum1
-{
-  font-family: Arial, Helvetica, sans-serif ;
+#Resum1 {
+  font-family: Arial, Helvetica, sans-serif;
   background-color: yellow;
-  font: bold;
+  font-weight: bold;
   color: #000000;
-    
+  transition: all 0.3s ease;
 }
-#Resum1:hover
-{ 
+
+#Resum1:hover {
   color: #FFFFFF;
   background-color: #222222;
 }
@@ -210,11 +209,16 @@ a:hover {
 
 
 
-.giff1
-{ 
-  padding-left: 12%;
-    object-fit: contain;
-  width: 40%;
+.giff1 {
+  
+  height: auto;
+  object-fit: contain;
+  max-width: 1000px;
+  width: 50%;
+  overflow: hidden;
+  border-radius: 10%;
+  margin-left: 2%;
+  padding: 1% 1% 1% 2%;
 }
 
 
@@ -587,6 +591,17 @@ a:hover {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+
+  #Resum1
+  {
+    padding: 0;
+    color: white;
+  }
+  #Resum1:hover
+  {
+  
+    color: var(--gray);
+  }
   .navbar {
     padding: 15px 0;
   }
@@ -652,7 +667,111 @@ a:hover {
     flex-direction: column;
     text-align: center;
   }
+  
+  .giff1
+  {
+    display: none;
+  }
+
+/* Default layout (Desktop) */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2rem;
+  padding: 2rem;
 }
+
+.contain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+}
+
+.resume-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Image sticks to bottom */
+  align-items: center;
+}
+
+.resume-image {
+  max-width: 100%;
+  height: auto;
+}
+
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contain {
+    order: 1;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .resume-box {
+    order: 2;
+    width: 100%;
+    margin-top: 2rem;
+    justify-content: center; /* Center image on small screens */
+  }
+
+  .resume-image {
+    width: 100%;
+    max-width: 90vw;
+    height: auto;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-label {
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+  }
+
+  .info-value {
+    color: #ccc;
+    word-break: break-word;
+  }
+ 
+  #resume{
+    background: #000;
+  }
+  #Resum1
+  { 
+    position: relative;
+    padding: 10px 15px;
+    background: none;
+    color: #fff;
+  }
+  #Resum1:hover
+  {
+    color: #007bff;
+    background: rgb(214, 202, 25);
+  }
+
+
+
+}
+
+  
+
 
 @media (max-width: 480px) {
 
@@ -677,16 +796,14 @@ a:hover {
   .tech-list {
     grid-template-columns: 1fr;
   }
-  #Resum1
+  .resume-box
   {
+    display: flex;
     object-fit: contain;
     border-radius: 10%;
     margin-left: 2%;
     padding: 1% 1% 1% 2%;
-
+    gap: 12%;
 
   }
-  .giff1{
-     display: none;
-      }
 }

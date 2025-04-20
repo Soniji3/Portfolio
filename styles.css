@@ -590,19 +590,9 @@ a:hover {
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
-  #Resum1
-  {
-    padding: 0;
-    color: white;
-  }
-  #Resum1:hover
-  {
-  
-    color: var(--gray);
-  }
-  .navbar {
+ .navbar {
     padding: 15px 0;
   }
   
@@ -668,10 +658,7 @@ a:hover {
     text-align: center;
   }
   
-  .giff1
-  {
-    display: none;
-  }
+
 
 /* Default layout (Desktop) */
 .contact-container {
@@ -765,8 +752,10 @@ a:hover {
     color: #007bff;
     background: rgb(214, 202, 25);
   }
-
-
+  .giff1
+  {
+    display: none;
+  }
 
 }
 
@@ -774,6 +763,10 @@ a:hover {
 
 
 @media (max-width: 480px) {
+  .giff1
+  {
+    display: none;
+  }
 
   .hero-title {
     font-size: 2.5rem;

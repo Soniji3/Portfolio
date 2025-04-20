@@ -19,7 +19,7 @@ A responsive and elegant project portfolio website built with **HTML** and **CSS
 
 ## 📸 Screenshots
 
-![Uploading image.png…]()
+
 
 
 ## 🌐 Live Demo

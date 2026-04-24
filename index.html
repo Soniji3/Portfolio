@@ -1,391 +1,1305 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lakshya Soni | Software Developer</title>
-    <meta name="description" content="Lakshya Soni - Software Developer Portfolio. Recent graduate from Rajasthan University, specializing in web development and modern technologies.">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://camo.githubusercontent.com/b49a607cd6e67186c8e4b6e8be9675589f6eef0c4da41dc04ab03e415c8deba4/68747470733a2f2f6d69722d73332d63646e2d63662e626568616e63652e6e65742f70726f6a6563745f6d6f64756c65732f6d61785f313230302f3036663231613136313932313931392e363363643738383764306137302e676966">
-  </head>
-  <body>
-    <header>
-      <nav class="navbar">
-        <div class="container">
-          <div class="logo">Lakshya Soni</div>
-          <ul class="nav-links">
-            <li><a href="#hero" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-            <li><a id="Resum1" class="nav-link" href="https://drive.google.com/file/d/1VZkWPmFyiKd1CoxheUz4borDyeqa_K-y/view?usp=drive_link" class="nav-link">Resume</a></li>          
-          </ul>
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshya Soni — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a08;
+    --white: #f2ede6;
+    --cream: #e8e0d0;
+    --accent: #c8392d;
+    --gold: #d4a843;
+    --gray: #6b6459;
+    --light-gray: #b8b0a0;
+    --border: rgba(200,190,175,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+    mix-blend-mode: normal;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 40px; height: 40px;
+    border: 1px solid rgba(200,57,45,0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.3s, height 0.3s;
+  }
+  .cursor.hovering { width: 6px; height: 6px; }
+  .cursor-ring.hovering { width: 60px; height: 60px; border-color: var(--gold); }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 9000;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,8,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--white);
+    padding: 10px 24px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--white); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px 80px 48px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(80px, 10vw, 140px);
+    line-height: 0.92;
+    letter-spacing: -2px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .hero-name .line2 {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--white);
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    margin-top: 16px;
+    margin-bottom: 40px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--light-gray);
+    max-width: 380px;
+    margin-bottom: 48px;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--white);
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: 0;
+  }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary:hover { color: var(--white); }
+  .btn-primary:hover::after { transform: translateX(0); }
+
+  .btn-outline {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px solid var(--border);
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 48px;
+    position: relative;
+  }
+
+  .hero-img-wrap {
+    position: relative;
+    width: 320px;
+    height: 400px;
+  }
+  .hero-img-wrap::before {
+    content: '';
+    position: absolute;
+    top: 20px; left: 20px;
+    width: 100%; height: 100%;
+    border: 1px solid var(--accent);
+    z-index: 0;
+  }
+  .hero-img-wrap img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.1);
+  }
+  .hero-img-overlay {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    z-index: 2;
+    background: var(--black);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--light-gray);
+    text-transform: uppercase;
+  }
+  .hero-img-overlay strong { color: var(--white); display: block; font-size: 20px; font-family: 'Bebas Neue', cursive; letter-spacing: 1px; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px; left: 48px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gray);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .hero-scroll::before {
+    content: '';
+    width: 1px; height: 48px;
+    background: var(--gray);
+    display: block;
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+    background: var(--accent);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 48px;
+    animation: marquee 18s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track span {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+  .marquee-track span.dot { color: rgba(0,0,0,0.3); }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTIONS */
+  section { padding: 120px 48px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(48px, 6vw, 80px);
+    letter-spacing: 2px;
+    line-height: 1;
+    color: var(--white);
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ABOUT */
+  #about {
+    border-bottom: 1px solid var(--border);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--light-gray);
+    margin-bottom: 24px;
+  }
+  .about-text p strong { color: var(--white); font-weight: 500; }
+
+  .about-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.5;
+    color: var(--gold);
+    border-left: 2px solid var(--accent);
+    padding-left: 28px;
+    margin: 40px 0;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .tech-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--light-gray);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+  }
+  .tech-item::before {
+    content: '▸';
+    color: var(--accent);
+    font-size: 10px;
+  }
+  .tech-item:hover { color: var(--white); }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .stat-box {
+    border: 1px solid var(--border);
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .stat-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+    z-index: 0;
+    opacity: 0.1;
+  }
+  .stat-box:hover { border-color: var(--accent); }
+  .stat-box:hover::before { transform: scaleX(1); }
+  .stat-num {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 56px;
+    color: var(--white);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-top: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SKILLS */
+  #skills {
+    background: #0e0e0c;
+    border-bottom: 1px solid var(--border);
+  }
+  .skills-categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .skill-category {
+    background: var(--black);
+    padding: 48px 40px;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .skill-category:hover { border-color: var(--accent); }
+  .skill-cat-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-bar-wrap { margin-bottom: 20px; }
+  .skill-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .skill-name span { color: var(--gold); }
+  .skill-bar {
+    height: 2px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  .skill-fill.animate { transform: scaleX(1); }
+
+  /* PROJECTS */
+  #projects {
+    border-bottom: 1px solid var(--border);
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .project-card {
+    background: #0e0e0c;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.3s;
+    group: true;
+  }
+  .project-card:hover { border-color: var(--accent); }
+  .project-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: grayscale(60%) contrast(1.1);
+    transition: filter 0.5s, transform 0.5s;
+  }
+  .project-card:hover .project-img {
+    filter: grayscale(0%) contrast(1.1);
+    transform: scale(1.04);
+  }
+  .project-img-wrap {
+    overflow: hidden;
+    position: relative;
+    background: #1a1a16;
+  }
+  .project-img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(10,10,8,0.8));
+  }
+  .project-body { padding: 28px; }
+  .project-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .project-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .project-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--light-gray);
+    margin-bottom: 20px;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    color: var(--gray);
+    transition: all 0.3s;
+  }
+  .project-card:hover .tag { border-color: rgba(200,57,45,0.4); color: var(--light-gray); }
+  .project-links {
+    display: flex;
+    gap: 16px;
+  }
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s;
+  }
+  .project-link:hover { color: var(--accent); }
+  .project-link svg { width: 12px; height: 12px; }
+
+  /* CERTIFICATES */
+  #certificates {
+    background: #0e0e0c;
+    border-bottom: 1px solid var(--border);
+  }
+  .certs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .cert-item {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .cert-item::before {
+    content: '';
+    position: absolute;
+    left: -48px; right: -48px; top: 0; bottom: 0;
+    background: rgba(200,57,45,0.04);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .cert-item:hover::before { opacity: 1; }
+  .cert-num {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 44px;
+    color: var(--border);
+    line-height: 1;
+  }
+  .cert-info {}
+  .cert-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 6px;
+    transition: color 0.3s;
+  }
+  .cert-item:hover .cert-name { color: var(--accent); }
+  .cert-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--gray);
+  }
+  .cert-arrow {
+    font-size: 20px;
+    color: var(--border);
+    transition: color 0.3s, transform 0.3s;
+  }
+  .cert-item:hover .cert-arrow { color: var(--accent); transform: translate(4px, -4px); }
+
+  /* CONTACT */
+  #contact {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-headline {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(60px, 7vw, 100px);
+    letter-spacing: 2px;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .contact-headline span { color: var(--accent); }
+  .contact-subtext {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--light-gray);
+    max-width: 360px;
+    margin-bottom: 48px;
+  }
+  .contact-email {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--gold);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: color 0.3s;
+    margin-bottom: 40px;
+  }
+  .contact-email:hover { color: var(--white); }
+
+  .contact-socials {
+    display: flex;
+    gap: 16px;
+  }
+  .social-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .social-link:hover { color: var(--white); border-color: var(--white); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .form-input, .form-textarea {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: none;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--gray); }
+  .form-textarea { height: 140px; }
+  .form-submit {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--white);
+    border: none;
+    padding: 16px 40px;
+    cursor: none;
+    transition: all 0.3s;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-submit::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .form-submit span { position: relative; z-index: 1; }
+  .form-submit:hover { color: var(--white); }
+  .form-submit:hover::after { transform: translateX(0); }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+  }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--gray);
+  }
+  .footer-copy span { color: var(--accent); }
+  .footer-logo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+
+  /* ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Hero Animation */
+  .hero-left > * {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroIn 0.8s ease forwards;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.5s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.6s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.7s; }
+  @keyframes heroIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-img-wrap {
+    opacity: 0;
+    transform: translateX(30px);
+    animation: imgIn 0.9s ease 0.5s forwards;
+  }
+  @keyframes imgIn {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 100px 24px 80px; border-right: none; }
+    .hero-scroll { display: none; }
+    section { padding: 80px 24px; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .skills-categories, .projects-grid { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    .cert-item { grid-template-columns: 48px 1fr auto; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">LS<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#certificates">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://drive.google.com/file/d/1VZkWPmFyiKd1CoxheUz4borDyeqa_K-y/view?usp=drive_link" class="nav-cta" target="_blank">Resume ↗</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Software Developer — Rajasthan, India</div>
+    <h1 class="hero-name">
+      LAKSHYA<br>
+      <span class="line2">SONI</span>
+    </h1>
+    <p class="hero-subtitle">Building for the web.</p>
+    <p class="hero-desc">
+      A passionate developer and <strong>CS graduate</strong> from Rajasthan University,
+      crafting exceptional digital experiences. Focused on accessible,
+      human-centered products.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary"><span>View My Work</span></a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-scroll">Scroll Down</div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img
+        src="https://lh3.googleusercontent.com/a/ACg8ocJfOjixVw1nCCt0pv6E5uFpUKuj21hS4hwS80dCIgUqpYhTl7Y-NA=s385-c-no"
+        alt="Lakshya Soni"
+        onerror="this.src='https://placehold.co/320x400/1a1a16/f2ede6?text=LS'"
+      >
+      <div class="hero-img-overlay">
+        <strong>2024</strong>
+        Open to Opportunities
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>React</span><span class="dot">✦</span>
+    <span>Node.js</span><span class="dot">✦</span>
+    <span>JavaScript</span><span class="dot">✦</span>
+    <span>MongoDB</span><span class="dot">✦</span>
+    <span>HTML & CSS</span><span class="dot">✦</span>
+    <span>Tailwind</span><span class="dot">✦</span>
+    <span>Git</span><span class="dot">✦</span>
+    <span>Figma</span><span class="dot">✦</span>
+    <span>React</span><span class="dot">✦</span>
+    <span>Node.js</span><span class="dot">✦</span>
+    <span>JavaScript</span><span class="dot">✦</span>
+    <span>MongoDB</span><span class="dot">✦</span>
+    <span>HTML & CSS</span><span class="dot">✦</span>
+    <span>Tailwind</span><span class="dot">✦</span>
+    <span>Git</span><span class="dot">✦</span>
+    <span>Figma</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Hello! I'm <strong>Lakshya</strong>, a passionate software developer based in <strong>Rajasthan, India</strong>. I recently graduated from Rajasthan University with a degree in Computer Science.</p>
+      <p>My journey in software development began during my college years, where I developed a strong foundation in programming fundamentals and web technologies.</p>
+      <blockquote class="about-quote">
+        "I enjoy creating things that live on the internet — websites, applications, and everything in between."
+      </blockquote>
+      <p>I'm currently looking for new opportunities where I can contribute, grow, and continue learning in fast-paced environments.</p>
+
+      <div class="tech-grid" style="margin-top:32px">
+        <div class="tech-item">JavaScript (ES6+)</div>
+        <div class="tech-item">React</div>
+        <div class="tech-item">Node.js</div>
+        <div class="tech-item">HTML & CSS</div>
+        <div class="tech-item">Tailwind CSS</div>
+        <div class="tech-item">Git & GitHub</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Projects Built</div>
         </div>
-      </nav>
-    </header>
-
-    <main>
-      <!-- Hero Section -->
-        <section id="hero" class="hero-section">
-          <div class="containers">
-            <div class="hero-content">
-              <p class="intro-text">Hi, my name is</p>
-              <h1 class="hero-title">Lakshya Soni<span class="dot">.</span></h1>
-              <h2 class="hero-subtitle">I build things for the web.</h2>
-              <p class="hero-description">
-                I'm a software developer and recent graduate from Rajasthan University, 
-                specializing in building exceptional digital experiences. 
-                Currently, I'm focused on building accessible, human-centered products.
-              </p>
-              <div class="hero-buttons">
-                <a href="#projects" class="btn btn-outline">Check out my work <span class="arrow">→</span></a>
-                <a href="#contact" class="btn btn-filled">Get in touch</a>
-              </div>
-            </div>
-          </div>
-          
-              <img  class="giff1" src="https://camo.githubusercontent.com/2af5ba8a05221c0b66c77b6d33c01f35ed0a3974e7012fd9d6b3dde5ea5ecdb7/68747470733a2f2f6d69722d73332d63646e2d63662e626568616e63652e6e65742f70726f6a6563745f6d6f64756c65732f6d61785f313230302f3036663231613136313932313931392e363363643738383764306137302e676966" alt="">
-
-      
-          
-        </section>
-
-      <!-- About Section -->
-      <section id="about" class="about-section">
-        <div class="container">
-          <h2 class="section-title">About Me</h2>
-          <div class="about-content">
-            <div class="about-text">
-              <p>Hello! I'm Lakshya, a passionate software developer based in Rajasthan, India. I recently graduated from Rajasthan University with a degree in Computer Science.</p>
-              <p>My journey in software development began during my college years, where I developed a strong foundation in programming fundamentals and web technologies. I enjoy creating things that live on the internet, whether that be websites, applications, or anything in between.</p>
-              <p>Here are a few technologies I've been working with recently:</p>
-              <ul class="tech-list">
-                <li>JavaScript (ES6+)</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>HTML & CSS</li>
-                <li>Tailwind CSS</li>
-                <li>Git & GitHub</li>
-              </ul>
-            </div>  
-            <div class="about-image">
-              <div class="image-container">
-                <!-- Placeholder for image -->
-
-                  <img  id="mager1"  src="https://lh3.googleusercontent.com/a/ACg8ocJfOjixVw1nCCt0pv6E5uFpUKuj21hS4hwS80dCIgUqpYhTl7Y-NA=s385-c-no" alt="">
-                  
-                </div>
-            </div>
-          </div>
+        <div class="stat-box">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Certificates</div>
         </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section id="skills" class="skills-section">
-        <div class="container">
-          <h2 class="section-title">Skills</h2>
-          <div class="skills-content">
-            <div class="skills-category">
-              <h3 class="category-title">Frontend</h3>
-              <div class="skills-list">
-                <div class="skill-item">
-                  <span class="skill-name">HTML</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 90%"></div>
-                  </div>
-                  <span class="skill-percentage">90%</span>
-                </div>
-                <div class="skill-item">
-                  <span class="skill-name">CSS</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                  </div>
-                  <span class="skill-percentage">85%</span>
-                </div>
-                <div class="skill-item">
-                  <span class="skill-name">JavaScript</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                  </div>
-                  <span class="skill-percentage">80%</span>
-                </div>
-                <div class="skill-item">
-                  <span class="skill-name">React</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 75%"></div>
-                  </div>
-                  <span class="skill-percentage">75%</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="skills-category">
-              <h3 class="category-title">Backend</h3>
-              <div class="skills-list">
-                <div class="skill-item">
-                  <span class="skill-name">Node.js</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 70%"></div>
-                  </div>
-                  <span class="skill-percentage">70%</span>
-                </div>
-                <div class="skill-item">
-                  <span class="skill-name">Express</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 65%"></div>
-                  </div>
-                  <span class="skill-percentage">65%</span>
-                </div>
-                <div class="skill-item">
-                  <span class="skill-name">MongoDB</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 60%"></div>
-                  </div>
-                  <span class="skill-percentage">60%</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="skills-category">
-              <h3 class="category-title">Tools</h3>
-              <div class="skills-list">
-                <div class="skill-item">
-                  <span class="skill-name">Git</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                  </div>
-                  <span class="skill-percentage">85%</span>
-                </div>
-                <div class="skill-item">
-                  <span class="skill-name">VS Code</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 90%"></div>
-                  </div>
-                  <span class="skill-percentage">90%</span>
-                </div>
-                <div class="skill-item">
-                  <span class="skill-name">Figma</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 60%"></div>
-                  </div>
-                  <span class="skill-percentage">60%</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="stat-box">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Technologies</div>
         </div>
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects" class="projects-section">
-        <div class="container">
-          <h2 class="section-title">Projects</h2>
-          <div class="projects-grid">
-            <div class="project-card">
-              <img class="giff2" src="https://github.com/Soniji3/Catering-Site/blob/main/image/Dish.png?raw=true">
-          
-              <div class="project-content">
-                <h3 class="project-title">E-commerce Website</h3>
-                <p class="project-description">A fully responsive e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product filtering, cart functionality, and payment integration.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">Node.js</span>
-                  <span class="tech-tag">MongoDB</span>
-                  <span class="tech-tag">Express</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/Soniji3/Catering-Site.git" class="project-link">View Live</a>
-                  <a href="https://github.com/Soniji3/Catering-Site.git" class="project-link">GitHub</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="oppa">
-                <img class="giff3" src="https://github.com/Soniji3/calculator/blob/main/Images/image.png?raw=true " alt=""> 
-              </div>
-              
-              <div class="project-content">
-                <h3 class="project-title">calculator</h3>
-                <p class="project-description">A sleek and efficient calculator application designed to perform basic arithmetic operations quickly and accurately. Its intuitive interface and responsive design ensure a smooth experience on both desktop and mobile devices.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">JavaScript</span>
-                  <span class="tech-tag">HTML/CSS</span>
-                  <span class="tech-tag">API Integration</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/Soniji3/calculator.git" class="project-link">View Live</a>
-                  <a href="https://github.com/Soniji3/calculator.git" class="project-link">GitHub</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-              <img class="giff4" src="https://github.com/Soniji3/Git_Commit/blob/main/1734902190429.jpg?raw=true" alt  ="">
-                
-              
-              <div class="project-content">
-                <h3 class="project-title">GitHub </h3>
-                <p class="project-description">GitHub Dummy Reppo Maker is a tool designed to quickly generate dummy repositories for testing and demo purposes. It allows developers to simulate repository structures, complete with customizable READMEs and commit histories, making it easier to experiment with GitHub workflows and integrations.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">React</span>
-                  <span class="tech-tag">CSS</span>
-                  <span class="tech-tag">LocalStorage</span>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/Soniji3/Git_Commit.git" class="project-link">View Live</a>
-                  <a href="https://github.com/Soniji3/Git_Commit.git" class="project-link">GitHub</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-  <!-- Certificate section---->
-
-  <section id="projects" class="projects-section">
-    <div class="container">
-      <h2 class="section-title">Certificates</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <img class="giff2" src="https://github.com/Soniji3/Sliding-window/blob/main/EXAMPLE/Screenshot%202025-04-07%20035835.png?raw=true" alt="">
-      
-          <div class="project-content">
-            <h3 class="project-title">Data Visulation</h3>
-            <p class="project-description">A fully responsive e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product filtering, cart functionality, and payment integration.</p>
-            <div class="project-tech">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">MongoDB</span>
-              <span class="tech-tag">Express</span>
-            </div>
-            <div class="project-links">
-              <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_HNNN7TeEY8RHCyuEx_1743978283455_completion_certificate.pdf" class="project-link">Certificate</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="project-card">
-          
-            <img class="giff2" src="https://github.com/Soniji3/Sliding-window/blob/main/EXAMPLE/Screenshot%202025-04-07%20041124.png?raw=true" alt=""> 
-      
-          
-          <div class="project-content">
-            <h3 class="project-title">Cybersecurity Analyst</h3>
-            <p class="project-description">A weather forecast application that provides real-time weather data using the OpenWeatherMap API. Features include location search, 7-day forecast, and responsive design.</p>
-            <div class="project-tech">
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">HTML/CSS</span>
-              <span class="tech-tag">API Integration</span>
-            </div>
-            <div class="project-links">
-              <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_HNNN7TeEY8RHCyuEx_1736670194855_completion_certificate.pdf" class="project-link">Certificate</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="project-card">
-          <img class="giff2" src="https://github.com/Soniji3/Catering-Site/blob/main/image/image.png?raw=true" alt=""> 
-          <div class="project-content">
-            <h3 class="project-title">Python For Data Science</h3>
-            <p class="project-description">The Python for Data Science course offers an in-depth introduction to programming with Python and its extensive libraries such as Pandas, NumPy, Matplotlib, and Scikit-Learn...</p>
-            <div class="project-tech">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">CSS</span>
-              <span class="tech-tag">LocalStorage</span>
-            </div>
-            <div class="project-links">
-              <a href="https://www.coursera.org/account/accomplishments/records/VEB8LCCTXKHV" class="project-link">Certificate</a>
-            </div>
-          </div>  
+        <div class="stat-box">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Passion to Learn</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+  </div>
 
+  <div class="skills-categories reveal">
+    <div class="skill-category">
+      <div class="skill-cat-title">Frontend</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">HTML <span>90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">CSS <span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">JavaScript <span>80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">React <span>75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+    </div>
 
-      <!-- Contact Section -->
-      <section id="contact" class="contact-section">
-        <div class="contact-container">
-      
-          <!-- Left Side: Text Content -->
-          <div class="contain">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-              <div class="contact-text">
-                <p>I'm currently looking for new opportunities to work on exciting projects. Whether you have a question or just want to say hi, I'll do my best to get back to you!</p>
-              </div>
-              <div class="contact-info">
-                <div class="info-item">
-                  <span class="info-label">Email:</span>
-                  <a href="mailto:lakshya.soni@example.com" class="info-value">sonilakshya0177@gmail.com</a>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">LinkedIn:</span>
-                  <a href="https://www.linkedin.com/in/lakshya-soni-619ba5245" target="_blank" class="info-value">linkedin.com/in/lakshya-soni</a>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">GitHub:</span>
-                  <a href="#" target="_blank" class="info-value">github.com/lakshya-soni</a>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <!-- Right Side: Image -->
-          <div class="resume-box">
-            <a href="https://drive.google.com/file/d/1XEuYLsGWyVv3PA48CB0ezyyCUPxIwAol/view?usp=drive_link">
+    <div class="skill-category">
+      <div class="skill-cat-title">Backend</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">Node.js <span>70%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">Express <span>65%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">MongoDB <span>60%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
+    </div>
 
-              <img src="image/Image1.png"  alt="Resume" class="resume-image">
-            </a>
-          </div>
-      
+    <div class="skill-category">
+      <div class="skill-cat-title">Tools</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">Git <span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">VS Code <span>90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-name">Figma <span>60%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Selected Work</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-img-wrap">
+        <img class="project-img"
+          src="https://github.com/Soniji3/Catering-Site/blob/main/image/Dish.png?raw=true"
+          alt="E-Commerce Website"
+          onerror="this.src='https://placehold.co/600x220/1a1a16/6b6459?text=E-Commerce'"
+        >
+      </div>
+      <div class="project-body">
+        <div class="project-num">Project — 01</div>
+        <h3 class="project-title">E-Commerce Website</h3>
+        <p class="project-desc">A fully responsive e-commerce platform with user authentication, product filtering, cart functionality, and payment integration.</p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Express</span>
         </div>
-      </section>
-      
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <p>© 2024 Lakshya Soni. All Rights Reserved.</p>
-        <div class="social-links">
-          <a href="https://github.com/" target="_blank" class="social-link">GitHub</a>
-          <a href="https://www.linkedin.com/in/lakshya-soni-619ba5245" target="_blank" class="social-link">LinkedIn</a>
-          <a href="#" target="_blank" class="social-link">Twitter</a>
+        <div class="project-links">
+          <a href="https://github.com/Soniji3/Catering-Site.git" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live
+          </a>
+          <a href="https://github.com/Soniji3/Catering-Site.git" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+            GitHub
+          </a>
         </div>
       </div>
-    </footer>
+    </div>
 
-    <script>
-      // Simple JavaScript for mobile menu toggle
-      document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', function() {
-          navLinks.classList.toggle('active');
-          hamburger.classList.toggle('active');
-        });
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-img-wrap">
+        <img class="project-img"
+          src="https://github.com/Soniji3/calculator/blob/main/Images/image.png?raw=true"
+          alt="Calculator"
+          onerror="this.src='https://placehold.co/600x220/1a1a16/6b6459?text=Calculator'"
+        >
+      </div>
+      <div class="project-body">
+        <div class="project-num">Project — 02</div>
+        <h3 class="project-title">Calculator App</h3>
+        <p class="project-desc">A sleek and efficient calculator with intuitive interface, responsive design ensuring smooth experience on both desktop and mobile devices.</p>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML/CSS</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Soniji3/calculator.git" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live
+          </a>
+          <a href="https://github.com/Soniji3/calculator.git" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
 
-        // Close menu when clicking on a link
-        const links = document.querySelectorAll('.nav-link');
-        links.forEach(link => {
-          link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-          });
-        });
-      });
-    </script>
-  </body>
-  </html>
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-img-wrap">
+        <img class="project-img"
+          src="https://github.com/Soniji3/Git_Commit/blob/main/1734902190429.jpg?raw=true"
+          alt="GitHub Dummy Repo Maker"
+          onerror="this.src='https://placehold.co/600x220/1a1a16/6b6459?text=GitHub+Tool'"
+        >
+      </div>
+      <div class="project-body">
+        <div class="project-num">Project — 03</div>
+        <h3 class="project-title">GitHub Repo Maker</h3>
+        <p class="project-desc">A tool to quickly generate dummy repositories for testing and demo purposes, simulating repository structures with customizable READMEs.</p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">CSS</span>
+          <span class="tag">LocalStorage</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Soniji3/Git_Commit.git" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live
+          </a>
+          <a href="https://github.com/Soniji3/Git_Commit.git" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Certificates</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="certs-list">
+    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_HNNN7TeEY8RHCyuEx_1743978283455_completion_certificate.pdf" class="cert-item reveal" target="_blank">
+      <div class="cert-num">01</div>
+      <div class="cert-info">
+        <div class="cert-name">Data Visualisation</div>
+        <div class="cert-meta">Forage — React · Node.js · MongoDB · Express</div>
+      </div>
+      <div class="cert-arrow">↗</div>
+    </a>
+
+    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gmf3ypEXBj2wvfQWC_ifobHAoMjQs9s6bKS_HNNN7TeEY8RHCyuEx_1736670194855_completion_certificate.pdf" class="cert-item reveal reveal-delay-1" target="_blank">
+      <div class="cert-num">02</div>
+      <div class="cert-info">
+        <div class="cert-name">Cybersecurity Analyst</div>
+        <div class="cert-meta">Forage — JavaScript · HTML/CSS · API Integration</div>
+      </div>
+      <div class="cert-arrow">↗</div>
+    </a>
+
+    <a href="https://www.coursera.org/account/accomplishments/records/VEB8LCCTXKHV" class="cert-item reveal reveal-delay-2" target="_blank">
+      <div class="cert-num">03</div>
+      <div class="cert-info">
+        <div class="cert-name">Python For Data Science</div>
+        <div class="cert-meta">Coursera — Pandas · NumPy · Matplotlib · Scikit-Learn</div>
+      </div>
+      <div class="cert-arrow">↗</div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="contact-inner">
+    <div class="reveal">
+      <h3 class="contact-headline">LET'S<br>WORK<br><span>TOGETHER</span></h3>
+      <p class="contact-subtext">
+        I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you!
+      </p>
+      <a href="mailto:sonilakshya0177@gmail.com" class="contact-email">
+        ✉ sonilakshya0177@gmail.com
+      </a>
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/in/lakshya-soni-619ba5245" class="social-link" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Soniji3" class="social-link" target="_blank">GitHub</a>
+        <a href="https://drive.google.com/file/d/1VZkWPmFyiKd1CoxheUz4borDyeqa_K-y/view?usp=drive_link" class="social-link" target="_blank">Resume</a>
+      </div>
+    </div>
+
+    <div class="contact-form reveal reveal-delay-2">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Email</label>
+        <input type="email" class="form-input" placeholder="john@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(this)"><span>Send Message</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2024 <span>Lakshya Soni</span>. All rights reserved.</div>
+  <div class="footer-logo">LS.</div>
+  <div class="footer-copy">Made with <span>♥</span> in Rajasthan</div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.classList.add('hovering'); ring.classList.add('hovering'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('hovering'); ring.classList.remove('hovering'); });
+  });
+
+  // Intersection observer for reveals
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate skill bars
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => bar.classList.add('animate'));
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Also watch skills section
+  const skillsSection = document.querySelector('#skills');
+  const skillsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.skill-fill').forEach(bar => bar.classList.add('animate'));
+      }
+    });
+  }, { threshold: 0.2 });
+  skillsObserver.observe(skillsSection);
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(200,190,175,0.3)' : 'rgba(200,190,175,0.2)';
+  });
+
+  // Form submit
+  function handleSubmit(btn) {
+    const span = btn.querySelector('span');
+    span.textContent = 'Sent! ✓';
+    btn.style.pointerEvents = 'none';
+    setTimeout(() => {
+      span.textContent = 'Send Message';
+      btn.style.pointerEvents = 'auto';
+    }, 3000);
+  }
+</script>
+</body>
+</html>

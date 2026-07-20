@@ -107,13 +107,17 @@ npm start
 
   <h2>📸 Portfolio Preview</h2>
 
-  <img 
-    src="./images/preview.png" 
-    alt="Portfolio Preview" 
-    width="700"
+<a href="https://soniji3.github.io/Portfolio/" target="_blank">
+  <img
+    src="https://img.icons8.com/?size=100&id=92&format=png&color=000000"
+    alt="Portfolio"
+    width="35"
+    height="35"
+    align="center"
   />
+  Click here for Preview
+</a>
 
-  <hr />
 
   <h2>📬 Contact Me</h2>
 

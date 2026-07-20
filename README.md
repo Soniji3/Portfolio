@@ -118,7 +118,7 @@ npm start
   <h2>📬 Contact Me</h2>
 
   <ul>
-    <li>📧 Email: your-email@example.com</li>
+    <li>📧 Email: your-sonilakshya0177@gmail.com</li>
     <li>💼 LinkedIn: Your LinkedIn Profile</li>
     <li>🌐 Portfolio: Your Portfolio Link</li>
   </ul>
